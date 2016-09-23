@@ -14,13 +14,13 @@ let
 
      networking.firewall.allowedTCPPorts = [ 80 22 ];
   };
+
 in {
 
      resources.gceStaticIps = creds // {
         ipAddress = "130.211.188.234";
         name = "outside";
     };
-
     resources.gceNetworks."hydra-net" = creds // {
        addressRange = "192.168.4.0/24";
        firewall = {
@@ -33,5 +33,6 @@ in {
    };
 
   hydra = hydra;
+  webserver = hydra;
 
 }
